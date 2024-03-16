@@ -1,0 +1,13 @@
+first create the user model
+then, hash the password before creating user
+create the signup function
+* Note that the sign method is used to create a new token
+create the login functionality
+for checking password create a method in userSchema
+implement the protect route middleware
+and restricTo middleware
+after these, create forgotPassword and resetPassword functions
+handle the functionality of sending email
+build the change password function
+and update user data function
+and finally delete the user (actually set the active to false)
