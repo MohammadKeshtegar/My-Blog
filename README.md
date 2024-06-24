@@ -44,12 +44,12 @@ npm start
 
 <br />
 
-Then open the web on [https://localhost:5173] and you are good to go 😉.
+Then open the web on [website](https://localhost:5173) and you are good to go 😉.
 
 # Contact
 
-If you face any issue or have any question or idea, you can contact me from:
+If you face any issue or have any question or idea, you can contact me from
 <br />
 
-Telegram: [telegram link](https://t.me/Mohammadkeshtegar1401)
-Github: [github link](https://github.com/MohammadKeshtegar)
+- Telegram: [@Mohammadkeshtegar1401](https://t.me/Mohammadkeshtegar1401)
+- Github: [Mohammad Keshtegar](https://github.com/MohammadKeshtegar)
