@@ -49,7 +49,6 @@ Then open the web on [https://localhost:5173] and you are good to go 😉.
 # Contact
 
 If you face any issue or have any question or idea, you can contact me from:
-
 <br />
 
 Telegram: [telegram link](https://t.me/Mohammadkeshtegar1401)
