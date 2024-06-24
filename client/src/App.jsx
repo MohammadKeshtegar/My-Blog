@@ -2,12 +2,12 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Suspense } from "react";
 import { lazy } from "react";
 
+import { SearchProvider } from "./context/SearchContext";
+import { MarkProvider } from "./context/MarkContext";
+import ResetPassword from "./pages/ResetPassword";
 import ProtectedRoute from "./ui/ProtectedRoute";
 import FullSpinner from "./ui/FullSpinner";
 import ToastNotif from "./ui/ToastNotif";
-import { MarkProvider } from "./context/MarkContext";
-import { SearchProvider } from "./context/SearchContext";
-import ResetPassword from "./pages/ResetPassword";
 
 const ProtectFromAuth = lazy(() => import("./ui/ProtectFromAuth"));
 const AppLayout = lazy(() => import("./ui/AppLayout"));

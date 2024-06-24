@@ -66,10 +66,7 @@ export const createPost = catchAsync(async (req, res, next) => {
 
   if (req.file) post.imageCover = req.file.filename;
 
-  res.status(201).json({
-    status: "success",
-    data: post,
-  });
+  res.status(201).json({ status: "success", data: post });
 });
 
 export const updatePost = async (req, res, next) => {
@@ -94,10 +91,7 @@ export const updatePost = async (req, res, next) => {
 
   await post.save();
 
-  res.status(200).json({
-    status: "success",
-    data: post,
-  });
+  res.status(200).json({ status: "success", data: post });
 };
 
 export const deletePost = async (req, res, next) => {
@@ -105,8 +99,5 @@ export const deletePost = async (req, res, next) => {
 
   if (!post) return next(new AppError("No post found with this id", 404));
 
-  res.status(200).json({
-    status: "success",
-    message: "Post successfully deleted",
-  });
+  res.status(200).json({ status: "success", message: "Post successfully deleted" });
 };

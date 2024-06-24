@@ -1,9 +1,9 @@
 import { useMutation } from "@tanstack/react-query";
-import { loginUser as loginUserApi } from "../../services/apiUser";
+import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 
+import { loginUser as loginUserApi } from "../../services/apiUser";
 import { setUserData } from "../../redux/user/userSlice";
-import { useDispatch } from "react-redux";
 
 export function useLogin() {
   const dispatch = useDispatch();

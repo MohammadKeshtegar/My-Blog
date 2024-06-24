@@ -1,8 +1,8 @@
 import { Outlet, useLocation } from "react-router-dom";
 
 import { FilterProvider } from "../context/FilterContext";
-import Sidebar from "./Sidebar";
 import Header from "../ui/Header";
+import Sidebar from "./Sidebar";
 import Footer from "./Footer";
 
 function AppLayout() {
@@ -19,9 +19,7 @@ function AppLayout() {
 
       <div className="min-h-[calc(100%-4rem)] bg-neutral-900/90 flex">
         {showSidebar && <Sidebar />}
-        <div
-          className={`p-10 min-h-full bg-gradient-to-tr from-neutral-900/80 to-neutral-800/90 relative w-full`}
-        >
+        <div className={`p-10 min-h-full bg-gradient-to-tr from-neutral-900/80 to-neutral-800/90 relative w-full`}>
           <FilterProvider>
             <Outlet />
           </FilterProvider>

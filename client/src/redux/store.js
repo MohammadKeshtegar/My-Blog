@@ -1,20 +1,17 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import userReducer from "./user/userSlice";
-// import markReducer from "./mark/markSlice";
-import storage from "redux-persist/lib/storage";
 import { persistReducer, persistStore } from "redux-persist";
+import storage from "redux-persist/lib/storage";
+
+import userReducer from "./user/userSlice";
 
 const rootReducer = combineReducers({
   user: userReducer,
-  // mark: markReducer,
 });
 
 const persistConfig = {
   key: "root",
   version: 1,
   storage,
-  // blacklist: ["markReducer"],
-  // whitelist: ["userReducer"],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

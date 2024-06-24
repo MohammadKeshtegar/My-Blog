@@ -1,6 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
-import { resetPassword as resetPassowrdApi } from "../../services/apiUser";
 import { toast } from "react-toastify";
+
+import { resetPassword as resetPassowrdApi } from "../../services/apiUser";
 
 export function useResetPassword() {
   const { isPending: isReseting, mutate: resetPassword } = useMutation({

@@ -1,10 +1,10 @@
 import { useFilter } from "../../context/FilterContext";
-import { usePosts } from "./usePosts";
+import { useSearch } from "../../context/SearchContext";
 import Spinner from "../../ui/Spinner";
+import { usePosts } from "./usePosts";
 import Error from "../../ui/Error";
 import PostItem from "./PostItem";
 import Tags from "../../ui/Tags";
-import { useSearch } from "../../context/SearchContext";
 
 function Posts() {
   const { isLoading, data, error } = usePosts();
@@ -16,8 +16,7 @@ function Posts() {
 
   let posts = data.data;
 
-  if (filterField.length > 0)
-    posts = posts.filter((post) => filterField.includes(post.category.toLowerCase()));
+  if (filterField.length > 0) posts = posts.filter((post) => filterField.includes(post.category.toLowerCase()));
 
   if (query) posts = posts.filter((post) => post.title.includes(query));
 

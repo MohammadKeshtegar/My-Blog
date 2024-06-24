@@ -1,9 +1,9 @@
 import { redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useState } from "react";
 
 import UserPasswordForm from "../featues/users/UserPasswordForm";
 import UserDataForm from "../featues/users/UserDataForm";
-import { useState } from "react";
 import UserPhoto from "../ui/UserPhoto";
 
 function Profile() {
@@ -18,9 +18,7 @@ function Profile() {
         <div className="mx-auto">
           <UserPhoto
             photoStyle="border-2 border-gray-200 h-36 w-36 rounded-full shadow-sm mb-14 mt-10 mx-auto"
-            photoUrl={
-              !defaultPhoto ? `http://127.0.0.1:3000/images/users/${photo}` : file ? file : "/default-user.png"
-            }
+            photoUrl={!defaultPhoto ? `http://127.0.0.1:3000/images/users/${photo}` : file ? file : "/default-user.png"}
           />
 
           <div className="grid grid-cols-2 gap-y-1">

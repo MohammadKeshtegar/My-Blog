@@ -1,6 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
-import { forgotPassword } from "../../services/apiUser";
 import { toast } from "react-toastify";
+
+import { forgotPassword } from "../../services/apiUser";
 
 export function useForgotPassword() {
   const { isPending: isSending, mutate: sendEmail } = useMutation({

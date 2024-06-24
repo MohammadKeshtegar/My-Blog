@@ -1,15 +1,14 @@
+import { Form, useLocation } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import { useForm } from "react-hook-form";
-import { Form, useLocation } from "react-router-dom";
+import "react-quill/dist/quill.snow.css";
 import { toast } from "react-toastify";
 import ReactQuill from "react-quill";
-import { useEffect, useRef, useState } from "react";
-
-import "react-quill/dist/quill.snow.css";
 
 import { useCreatePost } from "./useCreatePost";
-import FillButton from "../../ui/FillButton";
 import { useUpdatePost } from "./useUpdatePost";
+import FillButton from "../../ui/FillButton";
 
 function CreatePost() {
   const [file, setFile] = useState();

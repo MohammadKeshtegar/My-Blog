@@ -1,8 +1,9 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { toast } from "react-toastify";
-import { signupUser } from "../../services/apiUser";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+
 import { setUserData } from "../../redux/user/userSlice";
+import { signupUser } from "../../services/apiUser";
 
 export function useSingup() {
   const queryClient = useQueryClient();

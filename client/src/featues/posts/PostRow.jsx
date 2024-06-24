@@ -9,9 +9,7 @@ import Table from "../../ui/Table";
 import Modal from "../../ui/Modal";
 import PostImage from "../../ui/PostImage";
 
-function PostRow({
-  post: { _id: postId, imageCover, title, shortDescription, category, createdAt, updatedAt, description },
-}) {
+function PostRow({ post: { _id: postId, imageCover, title, shortDescription, category, createdAt, updatedAt, description } }) {
   const { deletePost, isDeletingPost } = useDeletePost();
 
   const defaultImage = imageCover.startsWith("imageCover");
@@ -36,12 +34,7 @@ function PostRow({
             </button>
           </Modal.Open>
           <Modal.Window name="delete-user">
-            <ConfirmDelete
-              onConfirm={() => deletePost(postId)}
-              resourceName="post"
-              value={title}
-              disabled={isDeletingPost}
-            />
+            <ConfirmDelete onConfirm={() => deletePost(postId)} resourceName="post" value={title} disabled={isDeletingPost} />
           </Modal.Window>
         </Modal>
       </div>

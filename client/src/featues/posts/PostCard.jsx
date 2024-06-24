@@ -1,5 +1,6 @@
 import { FaBookmark } from "react-icons/fa";
 import { Link } from "react-router-dom";
+
 import { useMark } from "../../context/MarkContext";
 import PostImage from "../../ui/PostImage";
 
@@ -26,16 +27,12 @@ function PostCard({ post }) {
             </h2>
             <div className="flex gap-1">
               {postCategory.map((category) => (
-                <span className="text-[10px] tracking-wider bg-emerald-500/50 text-emerald-300 rounded-xl uppercase py-1 px-2">
-                  {category}
-                </span>
+                <span className="text-[10px] tracking-wider bg-emerald-500/50 text-emerald-300 rounded-xl uppercase py-1 px-2">{category}</span>
               ))}
             </div>
           </div>
 
-          <p className="text-xs text-left text-wrap mb-3 text-neutral-500 font-semibold">
-            {post.shortDescription}
-          </p>
+          <p className="text-xs text-left text-wrap mb-3 text-neutral-500 font-semibold">{post.shortDescription}</p>
         </div>
       </Link>
       <div

@@ -21,7 +21,7 @@ const createToken = (user, statusCode, res) => {
 
   if (process.env.NODE_ENV === "production") cookieOptions.secure = true;
 
-  res.cookie("access_token", token, { httpOnly: true });
+  res.cookie("access_token", token, cookieOptions);
 
   // Removing password from the output
   user.password = undefined;
@@ -54,8 +54,7 @@ export const login = catchAsync(async (req, res, next) => {
 
   const user = await User.findOne({ email }).select("+password").select("+role");
 
-  if (!user || !(await user.correctPassword(password, user.password)))
-    return next(new AppError("Incorrect email or password", 400));
+  if (!user || !(await user.correctPassword(password, user.password))) return next(new AppError("Incorrect email or password", 400));
 
   createToken(user, 200, res);
 });
@@ -90,8 +89,7 @@ export const protect = catchAsync(async (req, res, next) => {
 
 export const restrictTo = (...roles) => {
   return (req, res, next) => {
-    if (!roles.includes(req.user.role))
-      return next(new AppError("You do not have this permission to perform this action", 403));
+    if (!roles.includes(req.user.role)) return next(new AppError("You do not have this permission to perform this action", 403));
 
     next();
   };
@@ -148,8 +146,7 @@ export const resetPassword = catchAsync(async (req, res, next) => {
 export const changePassword = catchAsync(async (req, res, next) => {
   const user = await User.findById(req.user.id).select("+password");
 
-  if (!(await user.correctPassword(req.body.passwordCurrent, user.password)))
-    return next(new AppError("Your current password is wrong!", 401));
+  if (!(await user.correctPassword(req.body.passwordCurrent, user.password))) return next(new AppError("Your current password is wrong!", 401));
 
   user.password = req.body.password;
   user.confirmPassword = req.body.confirmPassword;

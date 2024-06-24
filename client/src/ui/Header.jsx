@@ -40,28 +40,30 @@ function Header() {
               <div className="flex items-center gap-2">
                 <UserPhoto
                   photoStyle="h-9 rounded-full"
-                  photoUrl={
-                    !defaultImage ? `http://127.0.0.1:3000/images/users/${photo}` : "/default-user.png"
-                  }
+                  photoUrl={!defaultImage ? `http://127.0.0.1:3000/images/users/${photo}` : "/default-user.png"}
                 />
                 <span className="cursor-pointer text-ellipsis">{name}</span>
               </div>
-              {arrowDown ? (
-                <IoIosArrowDown className="rotate-180 transition-all" />
-              ) : (
-                <IoIosArrowDown className="transition-all" />
-              )}
+              {arrowDown ? <IoIosArrowDown className="rotate-180 transition-all" /> : <IoIosArrowDown className="transition-all" />}
             </div>
 
             {arrowDown && <DropDown setArrowDown={setArrowDown} />}
           </div>
         ) : (
-          <Link
-            to="/signin"
-            className="hover:bg-emerald-500 hover:text-white transition-all flex items-center gap-2 px-3 py-2 border-emerald-500 border-2 text-white rounded-md mr-2"
-          >
-            Sign in <TbLogin2 />
-          </Link>
+          <div className="flex ">
+            <Link
+              to="/signup"
+              className="bg-emerald-500 hover:bg-emerald-400 transition-all flex items-center gap-2 px-3 py-2 border-emerald-500 border-2 text-white rounded-md mr-2"
+            >
+              Sign up
+            </Link>
+            <Link
+              to="/signin"
+              className="hover:bg-emerald-500 hover:text-white transition-all flex items-center gap-2 px-3 py-2 border-emerald-500 border-2 text-white rounded-md mr-2"
+            >
+              Sign in <TbLogin2 />
+            </Link>
+          </div>
         )}
       </nav>
     </div>

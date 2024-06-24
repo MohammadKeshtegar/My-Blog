@@ -1,6 +1,3 @@
-import { Link } from "react-router-dom";
-import FillButton from "../../ui/FillButton";
-
 function PasswordEmail() {
   return (
     <div className="bg-neutral-700 text-neutral-200 w-3/4 rounded-sm mx-auto mt-20 p-4">
