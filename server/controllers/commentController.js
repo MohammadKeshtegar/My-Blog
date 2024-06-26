@@ -17,16 +17,13 @@ export const createComment = catchAsync(async (req, res, next) => {
     content: req.body.comment,
     userId: req.user._id,
     postId: req.body.postId,
+    userRating: req.body.userRating,
   });
 
   let post;
 
-  if (req.body.averageRating) {
-    post = await Post.findByIdAndUpdate(
-      req.body.postId,
-      { $set: { averageRating: req.body.averageRating } },
-      { new: true }
-    );
+  if (req.body.userRating) {
+    post = await Post.findByIdAndUpdate(req.body.postId, { $set: { userRating: req.body.userRating } }, { new: true });
   }
 
   res.status(200).json({

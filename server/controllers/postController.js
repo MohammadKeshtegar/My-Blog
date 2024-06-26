@@ -45,6 +45,14 @@ export const getPost = catchAsync(async (req, res, next) => {
   });
 });
 
+export const getMarkPosts = catchAsync(async (req, res, next) => {
+  const markPosts = await Post.find({ _id: { $in: req.body.markPosts } });
+  res.status(200).json({
+    status: "success",
+    data: markPosts,
+  });
+});
+
 export const singlePost = catchAsync(async (req, res, next) => {
   const post = await Post.findOne({ slug: req.params.slug }).populate("comments");
 
@@ -66,7 +74,10 @@ export const createPost = catchAsync(async (req, res, next) => {
 
   if (req.file) post.imageCover = req.file.filename;
 
-  res.status(201).json({ status: "success", data: post });
+  res.status(201).json({
+    status: "success",
+    data: post,
+  });
 });
 
 export const updatePost = async (req, res, next) => {

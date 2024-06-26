@@ -3,7 +3,7 @@ import { useRouteError } from "react-router-dom";
 function Error({ errorMsg }) {
   const errors = useRouteError();
 
-  console.log(errors);
+  console.error(errors);
 
   const error = errorMsg || errors.data || errors.message;
 

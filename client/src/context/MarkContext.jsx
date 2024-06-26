@@ -16,8 +16,8 @@ function MarkProvider({ children }) {
   );
 
   function updateMarkList(mark) {
-    if (markList.find((item) => mark._id === item._id)) {
-      setMarkList((markList) => markList.filter((markItem) => markItem._id !== mark._id));
+    if (markList.find((item) => mark === item)) {
+      setMarkList((markList) => markList.filter((markItem) => markItem !== mark));
     } else {
       setMarkList((markList) => [...markList, mark]);
     }

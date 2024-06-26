@@ -24,20 +24,20 @@ function CommentItem({ comment }) {
       <div className="flex items-center justify-between gap-3 mb-4">
         <div className="flex items-center gap-3 ">
           <img
-            src={
-              comment.userId.photo.includes("default")
-                ? "/default-user.png"
-                : `http://127.0.0.1:3000/images/users/${comment?.userId?.photo}`
-            }
+            src={comment.userId.photo.includes("default") ? "/default-user.png" : `http://127.0.0.1:3000/images/users/${comment?.userId?.photo}`}
             alt="user"
             className="h-9 rounded-full"
           />
-          <h3 className="text-neutral-200">{comment.userId.name}</h3>
+          <div>
+            <h3 className="text-neutral-400 capitalize">
+              {comment.userId.name} ({comment.userRating})
+            </h3>
+          </div>
         </div>
 
         <span className="text-neutral-500">{new Date(comment.createdAt).toLocaleDateString()}</span>
       </div>
-      <p className="text-neutral-400">{comment.content}</p>
+      <p className="text-neutral-300">{comment.content}</p>
     </li>
   );
 }

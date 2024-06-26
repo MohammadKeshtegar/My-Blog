@@ -9,8 +9,8 @@ const postSchema = new mongoose.Schema(
     description: { type: String, required: [true, "A post must conatin content"] },
     category: { type: String, required: [true, "A post must have a category"] },
     imageCover: { type: String, default: "../data/default-post.png" },
-    averageRating: { type: Number, default: 4.5 },
-    averageQuantity: { type: Number, default: 0 },
+    ratingAverage: { type: Number, default: 0 },
+    ratingQuantity: { type: Number, default: 0 },
     slug: String,
   },
   {

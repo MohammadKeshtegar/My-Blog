@@ -15,7 +15,7 @@ function Home() {
   return (
     <div className="px-32">
       <div className="text-center">
-        <h1 className="text-3xl font-bold mb-2">Welcome to My blog</h1>
+        <h1 className="text-3xl font-bold mb-2">Welcome to Mohammad Blog</h1>
         <p>You can find useful content about Javascript, html, css, React, Nodejs and Djanog here.</p>
       </div>
 

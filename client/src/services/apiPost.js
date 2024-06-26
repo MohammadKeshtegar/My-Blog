@@ -19,9 +19,29 @@ export async function getPosts({ page }) {
   }
 }
 
-export async function getPost(slug) {
+export async function getPost(id) {
+  const res = await fetch(`/api/v1/posts/${id}`);
+  const data = await res.json();
+
+  return data;
+}
+
+export async function getSinglePost(slug) {
   const res = await fetch(`/api/v1/posts/post/${slug}`);
   const data = await res.json();
+
+  return data;
+}
+
+export async function getMarkPost(markPosts) {
+  const res = await fetch("/api/v1/posts/mark-posts", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ markPosts }),
+  });
+  const data = await res.json();
+
+  if (!res.ok) console.error(data);
 
   return data;
 }

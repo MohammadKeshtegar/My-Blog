@@ -21,7 +21,7 @@ function Header() {
   const defaultImage = photo.includes("default");
 
   return (
-    <div className="border-b-2 bg-neutral-800 border-emerald-500 py-3 px-4 h-[67px]">
+    <div className={`border-b-2 bg-neutral-800 border-emerald-500 py-3 px-4 h-[67px]`}>
       <nav className="flex justify-between items-center w-full relative">
         <NavLink to="/">
           <img src="/MB.png" alt="Logo" className="h-11 ml-5" />

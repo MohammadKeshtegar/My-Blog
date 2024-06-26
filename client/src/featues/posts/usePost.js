@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getPost } from "../../services/apiPost";
+import { getSinglePost } from "../../services/apiPost";
 import { useParams } from "react-router-dom";
 
 export function usePost() {
@@ -7,7 +7,7 @@ export function usePost() {
 
   const { isLoading, error, data } = useQuery({
     queryKey: ["posts", slug],
-    queryFn: () => getPost(slug),
+    queryFn: () => getSinglePost(slug),
   });
 
   return { isLoading, error, data };

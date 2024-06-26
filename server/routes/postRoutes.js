@@ -3,6 +3,7 @@ import {
   createPost,
   deletePost,
   getAllPosts,
+  getMarkPosts,
   getPost,
   singlePost,
   updatePost,
@@ -15,13 +16,9 @@ const router = express.Router();
 
 router.use("/:postId/comments", commentRouter);
 
-router.get("/post/:slug", singlePost);
-
+router.route("/mark-posts").post(getMarkPosts);
+router.route("/post/:slug").get(singlePost);
 router.route("/").get(getAllPosts).post(protect, restrictTo("admin"), uploadPostPhoto, createPost);
-router
-  .route("/:id")
-  .get(getPost)
-  .put(protect, restrictTo("admin"), uploadPostPhoto, updatePost)
-  .delete(protect, restrictTo("admin"), deletePost);
+router.route("/:id").get(getPost).put(protect, restrictTo("admin"), uploadPostPhoto, updatePost).delete(protect, restrictTo("admin"), deletePost);
 
 export default router;

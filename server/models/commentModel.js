@@ -6,6 +6,7 @@ const commentSchema = new mongoose.Schema(
     content: { type: String, required: true },
     postId: { type: mongoose.Schema.ObjectId, ref: "Post", required: [true, "Review must belong to a post!"] },
     userId: { type: mongoose.Schema.ObjectId, ref: "User", required: [true, "Review must belong to a user!"] },
+    userRating: { type: Number, min: 0, max: 5 },
   },
   {
     timestamps: true,
@@ -23,36 +24,36 @@ commentSchema.pre(/^find/, function (next) {
   next();
 });
 
-commentSchema.post("save", function () {
-  this.constructor.calcAverageRating(this.postId);
-});
-
-commentSchema.methods.calcAverageRating = async function (postId) {
+commentSchema.statics.calcAverageRating = async function (postId) {
   const stats = await this.aggregate([
     {
-      $match: { post: postId },
+      $match: { postId: postId },
     },
     {
       $group: {
-        _id: "$post",
+        _id: "$postId",
         nRating: { $sum: 1 },
-        avgRating: { $avg: "$rating" },
+        avgRating: { $avg: "$userRating" },
       },
     },
   ]);
 
   if (stats.length > 0) {
     await Post.findByIdAndUpdate(postId, {
-      ratingQuantity: stats[0].nRating,
       ratingAverage: stats[0].avgRating,
+      ratingQuantity: stats[0].nRating,
     });
   } else {
     await Post.findByIdAndUpdate(postId, {
-      ratingQuantity: 0,
       ratingAverage: 4.5,
+      ratingQuantity: 0,
     });
   }
 };
+
+commentSchema.post("save", async function () {
+  this.constructor.calcAverageRating(this.postId);
+});
 
 const Comment = mongoose.model("Comment", commentSchema);
 

@@ -8,7 +8,7 @@ function PostCard({ post }) {
   const defaultImage = post.imageCover.startsWith("imageCover");
   const postCategory = post.category.split("-");
   const { markList, updateMarkList } = useMark();
-  const mark = markList.find((markItem) => markItem._id === post._id);
+  const mark = markList.find((markItem) => markItem === post._id);
 
   return (
     <div className="bg-neutral-700/30 w-80 hover:ring-1 hover:ring-neutral-500 rounded-md overflow-hidden shadow-md hover:scale-105 hover:shadow-lg transition-all hover:cursor-pointer relative group">
@@ -18,16 +18,18 @@ function PostCard({ post }) {
         </div>
 
         <div className="p-2">
-          <div className="flex justify-between items-center mb-2">
+          <div className="flex justify-between items-start mb-2">
             <h2 className="text-xl capitalize font-semibold text-left flex flex-wrap items-center gap-2">
               {post.title}{" "}
               <span className="text-neutral-500 text-xs lowercase">
-                ({post.averageRating} / {post.averageQuantity} rating)
+                ({Math.round(post.ratingAverage * 100) / 100} / {post.ratingQuantity} rating)
               </span>
             </h2>
             <div className="flex gap-1">
               {postCategory.map((category) => (
-                <span className="text-[10px] tracking-wider bg-emerald-500/50 text-emerald-300 rounded-xl uppercase py-1 px-2">{category}</span>
+                <span key={category} className="text-[10px] tracking-wider bg-emerald-500/50 text-emerald-300 rounded-xl uppercase py-1 px-2">
+                  {category}
+                </span>
               ))}
             </div>
           </div>
