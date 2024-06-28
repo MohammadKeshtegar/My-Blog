@@ -44,7 +44,7 @@ npm start
 
 <br />
 
-Then open the web on "https://localhost:5173" and you are good to go 😉.
+Then open the web on "http://localhost:5173" and you are good to go 😉.
 
 # Contact
 
